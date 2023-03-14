@@ -13,14 +13,6 @@
   tags: service
   changed_when: false
 
-# # Wait for VM customization to complete
-# - name: Wait for VMs to stabalize
-#   when: not hostvars['localhost']['skip_vm_check']
-#   ansible.builtin.pause:
-#     seconds: 60
-#   tags: service
-#   changed_when: false
-
 # Install some packages required
 - name: Remove CDROM apt source if it exists
   ansible.builtin.lineinfile:
