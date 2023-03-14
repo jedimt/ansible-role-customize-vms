@@ -1,0 +1,19 @@
+galaxy_info:
+  author: jedimt
+  role_name: customize_vms
+  description: Customizes VMs for generic workloads
+
+  license: MIT
+
+  min_ansible_version: "5"
+
+  platforms:
+    - name: vCenter
+      versions:
+        - "6.7"
+
+  galaxy_tags:
+    - vm
+
+# dependencies:
+#   - role: ansible-role-deploy-vms
