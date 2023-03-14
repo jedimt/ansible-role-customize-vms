@@ -14,6 +14,3 @@ galaxy_info:
 
   galaxy_tags:
     - vm
-
-# dependencies:
-#   - role: ansible-role-deploy-vms
