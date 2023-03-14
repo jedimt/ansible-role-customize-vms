@@ -1,38 +1,53 @@
-Role Name
+Ansible Role: Customize VMs
 =========
 
-A brief description of the role goes here.
+Does very basic customization to VMs to prepare them for workload.
+- Installs some basic APT packages
+- Grows the root filesystem to fill the virtual disk
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+Ubuntu 18.x + VMs.
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+This role looks for the `skip_vm_check` variable which is set by `ansible-role-deploy-vms`.
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+This role expects to run right after the [ansible-role-deploy-vms](https://github.com/jedimt/ansible-role-deploy-vms) role.
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+    # ===========================================================================
+    # Customize VMs
+    # ===========================================================================
+    - name: Customize deployed VMs
+      hosts: servers
+      gather_facts: false
+      tags: play_customize_vms
 
-    - hosts: servers
+      vars_files:
+        # Ansible vault with all required passwords
+        - "/home/apatt/github/demopod-ansible/credentials.yml"
+
       roles:
-         - { role: username.rolename, x: 42 }
+        # If passwordless SSH not set up, use ansible_password to authenticate
+        - { role: ansible-role-customize-vms,
+            ansible_password: "{{ vault_ansible_password }}"
+        }
 
 License
 -------
 
-BSD
+MIT
 
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+Aaron Patten
+aaronpatten@gmail.com
