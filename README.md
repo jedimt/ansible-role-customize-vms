@@ -13,12 +13,12 @@ Ubuntu 18.x + VMs.
 Role Variables
 --------------
 
-This role looks for the `skip_vm_check` variable which is set by `ansible-role-deploy-vms`.
+This role looks for the `skip_vm_check` variable which is set by `jedimt.deploy_vms`.
 
 Dependencies
 ------------
 
-This role expects to run right after the [ansible-role-deploy-vms](https://github.com/jedimt/ansible-role-deploy-vms) role.
+This role expects to run right after the [jedimt.deploy_vms](https://github.com/jedimt/ansible-role-deploy_vms) role.
 
 Example Playbook
 ----------------
@@ -37,7 +37,7 @@ Example Playbook
 
       roles:
         # If passwordless SSH not set up, use ansible_password to authenticate
-        - { role: ansible-role-customize-vms,
+        - { role: jedimt.customize_vms,
             ansible_password: "{{ vault_ansible_password }}"
         }
 

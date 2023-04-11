@@ -1,5 +1,5 @@
 ---
-# tasks file for ansible-role-customize-vms
+# tasks file for jedimt.customize_vms
 
 # Wait for SSH to come online so we know the VMs are up
 - name: Wait for SSH
